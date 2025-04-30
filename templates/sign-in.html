@@ -1,0 +1,142 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Socialoom Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+      color: #e5e5e5;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 420px;
+      background: rgba(12, 12, 12, 0.85);
+      border: 1px solid #1e2a38;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-box h2 {
+      text-align: center;
+      font-size: 1.75rem;
+      margin-bottom: 25px;
+      color: #00b4d8;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 18px;
+      border: 1px solid #334155;
+      border-radius: 6px;
+      background-color: #1e293b;
+      color: #f1f5f9;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+
+    form input:focus {
+      border-color: #00b4d8;
+      outline: none;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 12px;
+      background: #00b4d8;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #000;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #0096c7;
+    }
+
+    .divider {
+      text-align: center;
+      margin: 25px 0 15px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+    }
+
+    .social-login {
+      display: block;
+      text-align: center;
+      background-color: #3b5998;
+      padding: 10px;
+      border-radius: 4px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+
+    .social-login:hover {
+      background-color: #2d4373;
+    }
+
+    .helper-links,
+    .signup-callout {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 0.85rem;
+    }
+
+    .helper-links a,
+    .signup-callout a {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+
+    .helper-links a:hover,
+    .signup-callout a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>Access Portal</h2>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit" class="submit-btn">Login</button>
+    </form>
+
+    <div class="divider">— or continue with —</div>
+    <a href="#" class="social-login"><i class="fab fa-facebook"></i> Facebook Login</a>
+
+    <div class="helper-links">
+      <a href="#">Forgot Password?</a>
+    </div>
+
+    <div class="signup-callout">
+      No account yet? <a href="{% url 'sign-up' %}">Sign up now</a>
+    </div>
+  </div>
+</body>
+</html>
